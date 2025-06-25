@@ -2,12 +2,20 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>Mô phỏng Bài toán Vạch thước</title>
+  <title>Mô phỏng Vạch Thước</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>Mô phỏng Bài toán Vạch Thước (Divide & Conquer)</h1>
+
+  <div class="controls">
+    <label>Độ dài L (%): <input type="number" id="inputLength" value="100" min="1" /></label>
+    <label>Chiều cao h: <input type="number" id="inputHeight" value="4" min="1" /></label>
+    <button onclick="renderRuler()">Vẽ lại</button>
+  </div>
+
   <div class="ruler" id="ruler"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
