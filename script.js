@@ -36,7 +36,7 @@ function renderRuler() {
   if (isNaN(L) || L <= 0) L = 10;
   if (isNaN(h) || h <= 0) h = 4;
 
-  const scale = 50; // mỗi đơn vị = 50px
+  const scale = 100; // mỗi đơn vị = 50px
   container.style.width = (L * scale) + "px";
 
   for (let i = 0; i <= L; i++) {
