@@ -1,44 +1,48 @@
-function drawTick(container, xPixel, height, maxHeight) {
+function drawTick(container, x, level, maxLevel) {
   const tick = document.createElement("div");
   tick.className = "tick";
-  tick.style.left = xPixel + "px";
-  tick.style.height = height * 10 + "px";
-
-  // Gradient màu theo chiều cao
-  const hue = 240 - ((height - 1) / (maxHeight - 1)) * 240;
-  tick.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
-
+  tick.style.left = x + "px";
+  tick.style.height = (50 - level * 10) + "px"; // càng nhỏ càng ngắn
   container.appendChild(tick);
 }
 
-function drawRuler(container, left, right, height, scale, maxHeight) {
-  if (height <= 0) return;
+function drawLabel(container, x, text) {
+  const label = document.createElement("div");
+  label.className = "label";
+  label.style.left = x + "px";
+  label.textContent = text;
+  container.appendChild(label);
+}
+
+function drawRecursive(container, left, right, level, maxLevel, scale) {
+  if (level > maxLevel) return;
+
   const mid = (left + right) / 2;
-  const midPixel = mid * scale;
-  drawTick(container, midPixel, height, maxHeight);
-  drawRuler(container, left, mid, height - 1, scale, maxHeight);
-  drawRuler(container, mid, right, height - 1, scale, maxHeight);
+  const xPixel = mid * scale;
+
+  drawTick(container, xPixel, level, maxLevel);
+
+  drawRecursive(container, left, mid, level + 1, maxLevel, scale);
+  drawRecursive(container, mid, right, level + 1, maxLevel, scale);
 }
 
 function renderRuler() {
-  const ruler = document.getElementById("ruler");
-  ruler.innerHTML = "";
+  const container = document.getElementById("ruler");
+  container.innerHTML = "";
 
   let L = parseInt(document.getElementById("inputLength").value);
   let h = parseInt(document.getElementById("inputHeight").value);
 
-  if (isNaN(L) || L <= 0) {
-    alert("Độ dài L phải > 0. Đang đặt lại L = 16");
-    L = 16;
-    document.getElementById("inputLength").value = 16;
-  }
-  if (isNaN(h) || h <= 0) {
-    alert("Chiều cao h phải > 0. Đang đặt lại h = 4");
-    h = 4;
-    document.getElementById("inputHeight").value = 4;
-  }
+  if (isNaN(L) || L <= 0) L = 10;
+  if (isNaN(h) || h <= 0) h = 4;
 
-  const scale = 10; // 1 đơn vị độ dài = 10px
-  ruler.style.width = L * scale + "px";
-  drawRuler(ruler, 0, L, h, scale, h);
+  const scale = 20; // mỗi đơn vị = 20px
+  container.style.width = (L * scale) + "px";
+
+  for (let i = 0; i <= L; i++) {
+    const x = i * scale;
+    drawTick(container, x, 0, h);
+    drawLabel(container, x, i.toString());
+    drawRecursive(container, i, i + 1, 1, h, scale);
+  }
 }
