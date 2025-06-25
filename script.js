@@ -2,7 +2,7 @@ function drawTick(container, x, level, maxLevel) {
   const tick = document.createElement("div");
   tick.className = "tick";
   tick.style.left = x + "px";
-  tick.style.height = (50 - level * 10) + "px"; // càng nhỏ càng ngắn
+  tick.style.height = (80 - level * 12) + "px"; // cao hơn và rõ ràng hơn
   container.appendChild(tick);
 }
 
@@ -36,7 +36,7 @@ function renderRuler() {
   if (isNaN(L) || L <= 0) L = 10;
   if (isNaN(h) || h <= 0) h = 4;
 
-  const scale = 20; // mỗi đơn vị = 20px
+  const scale = 50; // mỗi đơn vị = 50px
   container.style.width = (L * scale) + "px";
 
   for (let i = 0; i <= L; i++) {
