@@ -3,53 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <title>Mô phỏng Bài toán Vạch thước</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #f2f2f2;
-    }
-    h1 {
-      text-align: center;
-    }
-    .ruler {
-      position: relative;
-      height: 200px;
-      margin: 50px auto;
-      border-top: 3px solid #000;
-      width: 80%;
-    }
-    .tick {
-      position: absolute;
-      bottom: 0;
-      width: 1px;
-      background: black;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>Mô phỏng Bài toán Vạch Thước (Divide & Conquer)</h1>
   <div class="ruler" id="ruler"></div>
-
-  <script>
-    function drawTick(container, left, height) {
-      const tick = document.createElement("div");
-      tick.className = "tick";
-      tick.style.left = left + "%";
-      tick.style.height = height + "px";
-      container.appendChild(tick);
-    }
-
-    function drawRuler(container, left, right, height) {
-      if (height <= 0) return;
-      const mid = (left + right) / 2;
-      drawTick(container, mid, height * 10); // nhân 10 cho dễ nhìn
-      drawRuler(container, left, mid, height - 1);
-      drawRuler(container, mid, right, height - 1);
-    }
-
-    const ruler = document.getElementById("ruler");
-    drawRuler(ruler, 0, 100, 4); // 4 là chiều cao gốc h
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
