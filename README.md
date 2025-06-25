@@ -15,8 +15,6 @@ Trong quá trình học và khám phá thuật toán chia để trị, em rất 
     - Vẽ vạch mới ở vị trí đó, cấp độ giảm đi 1
     - Lặp lại đến khi cấp độ = 1
 
----
-
 ## 🌐 Link Demo
 https://duongdanghoccode.github.io/ruler_visualization/
 
@@ -25,5 +23,4 @@ https://duongdanghoccode.github.io/ruler_visualization/
 1. Mở file `index.html` bằng trình duyệt.
 2. Nhập `Độ dài thước` và `Độ dài vạch`.
 3. Nhấn **"Vẽ"** để xem cây thước được vẽ.
----
 
