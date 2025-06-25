@@ -2,15 +2,15 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>Mô phỏng Vạch Thước</title>
+  <title>Thước đo chia nhỏ</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Mô phỏng Bài toán Vạch Thước (Divide & Conquer)</h1>
+  <h1>Mô phỏng Thước Đo (Chia Nhỏ Dạng Ruler)</h1>
 
   <div class="controls">
-    <label>Độ dài L (đơn vị): <input type="number" id="inputLength" value="16" min="1" /></label>
-    <label>Chiều cao h: <input type="number" id="inputHeight" value="4" min="1" /></label>
+    <label>Độ dài thước (đơn vị): <input type="number" id="inputLength" value="10" min="1" /></label>
+    <label>Số mức chia nhỏ h: <input type="number" id="inputHeight" value="4" min="1" max="6" /></label>
     <button onclick="renderRuler()">Vẽ lại</button>
   </div>
 
